@@ -1,0 +1,49 @@
+
+<% include header.ejs %>
+<style type="text/css">
+    .caozuo{position: fixed;bottom: 0;left: 0;height: 100px;width: 100%;background-color: #ccc;}
+    .caozuo input{font-size: 30px;}
+    .caozuo input[type=text]{width: 100%;}
+    li{list-style: none;}
+</style>
+
+<h3>你好<span id="yonghu"><%= username%></span>，欢迎来到聊天室</h3>
+<div>
+    <ul class="liebiao list-group">
+
+    </ul>
+</div>
+
+<div class="caozuo">
+    <input type="text" id="neirong">
+</div>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    /*$("#neirong").keydown(function(e){
+     if(e.keyCode == 13){
+     //把文本框的内容发送
+     var neirong =  $("#neirong").val();
+     $(".liebiao").prepend("<li><b>" + "：</b>" + neirong + "</li>");
+     $(this).val('');
+     }
+     });*/
+    var socket = io();
+    $("#neirong").keydown(function(e){
+        if(e.keyCode == 13){
+            //把文本框的内容发送
+            socket.emit("liaotian",{
+                "neirong": $("#neirong").val(),
+                "ren": $("#yonghu").html()
+            });
+            $(this).val("");
+        }
+    });
+
+    socket.on("liaotian",function(msg){
+        $(".liebiao").prepend("<li class='list-group-item'><b>" + msg.ren + "：</b>" + msg.neirong + "</li>");	//prepend 往前插入内容
+    });
+</script>
+
+
