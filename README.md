@@ -1,10 +1,10 @@
--- 安装依赖
--- 安装nodejs
--- 安装mongodb
--- node app.js
+-- <p>安装依赖</p>
+-- <p>安装nodejs</p>
+-- <p>安装mongodb</p>
+-- <p>node app.js</p>
 
--- 快速运行
--- 安装git
--- 命令行git clone 
--- npm install 
--- node app.js
+-- <p>快速运行</p>
+-- <p>安装git</p>
+-- <p>命令行git clone https://github.com/incarhu/shuoshuo.git</p>
+-- <p>npm install</p>
+-- <p>node app.js</p>
